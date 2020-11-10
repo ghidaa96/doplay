@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Add new Show </title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        div {
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            width: 550px;
+            margin-top: 40px;
+        }
+
+        h1 {
+            font-weight: lighter;
+            padding-bottom: 20px;
+            padding-top: 20px;
+        }
+
+        #title {
+            width: 99%;
+        }
+
+        input {
+            margin-bottom: 30px;
+            width: 35%;
+        }
+
+        textarea {
+            margin-bottom: 30px;
+        }
+
+        body {
+            display: flex;
+        }
+
+        a {
+            margin-top: 50px;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>new Show </h1>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <form action="/shows/create" method="POST">
+            {% csrf_token %}
+            <label>Title</label>
+            <input type="text" name="title" id='title' /><br />
+            <label>NetWork</label>
+            <input type="text" name="network" />
+            <label>Release Date</label>
+            <input type="date" name="date" /><br />
+            <label>Description</label>
+            <textarea name="desc" cols="73" rows="5"></textarea>
+            <input type="submit" value="Create" />
+        </form>
+    </div>
+    <a href="/shows">Go Back</a>
+</body>
+
+</html>

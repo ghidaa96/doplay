@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Show </title>
+    <style>
+        table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table td,
+        table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #ddd;
+        }
+
+        table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #949494;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>All Shows </h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Release Date</th>
+                <th>Action</th>
+
+            </tr>
+            {% for show in show %}
+            <tr>
+                <td>{{show.id}}</td>
+                <td>{{show.title}}</td>
+                <td>{{show.release_date | date:"F d Y"}}</td>
+                <td><a href="shows/{{show.id}}">Show </a>|<a href="shows/{{show.id}}/edit"> Edit </a>|<a
+                        href="shows/{{show.id}}/destroy"> Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <a href="shows/new">Add new show</a>
+</body>
+
+</html>

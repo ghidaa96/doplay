@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>show information</title>
+        <meta charset="UTF-8"/>
+        <style>
+            #date{
+                margin-top: 90px;
+            }
+            body{
+                margin-left: 40px;
+                display: flex;
+            }
+            a{
+                margin-right: 20px;
+            }
+            div{
+                width: 800px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+        <h1>TV Show {{show.id}} </h1>
+        <p>title: {{show.title}}</p>
+        <p>newtwork: {{show.network}}</p>
+        <p> release date: {{show.release_date | date:"F d Y"}}</p>
+        <p> description: {{show.desc}}</p>
+        <p id='date'>laste updated: {{show.updated_at}}</p>
+        <a href="/shows/{{show.id}}/edit"> Edit </a>|<a href="/shows/{{show.id}}/destroy"> Delete</a>
+        </div>
+        <a href="/shows">Go Back</a>
+    </body>
+</html>
